@@ -1,0 +1,41 @@
+<?php
+
+namespace App\Libs\Database;
+
+class PDODatabaseHandler extends DatabaseHandler
+{
+
+    private static $_instance;
+    private static $_handler;
+
+    private function __construct(){
+        self::init();
+    }
+
+    public function __call($name, $arguments)
+    {
+        return call_user_func_array(array(&self::$_handler, $name), $arguments);
+    }
+
+    protected static function init()
+    {
+        try {
+            self::$_handler = new \PDO(
+                'mysql:host=' . DATABASE_HOST_NAME . ';dbname=' . DATABASE_DB_NAME . ';port=' . DATABASE_PORT_NUMBER .';charset=' . DATABASE_CHARSET,
+                DATABASE_USER_NAME, DATABASE_PASSWORD, array(
+                    \PDO::ATTR_ERRMODE => \PDO::ERRMODE_WARNING,
+                )
+            );
+        } catch (\PDOException $e) {
+            echo 'database connection error: ' . $e->getMessage();
+        }
+    }
+
+    public static function getInstance()
+    {
+        if(self::$_instance === null) {
+            self::$_instance = new self();
+        }
+        return self::$_instance;
+    }
+}

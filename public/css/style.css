@@ -1,0 +1,95 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #f1f1f1;
+    padding: 20px 20px 0 20px;
+}
+
+.page {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: auto auto;
+    grid-template-areas: 'head head head head head head head head head head' 'nav nav cont cont cont cont cont cont cont cont';
+    gap: 20px;
+    direction: rtl;
+
+}
+
+header {
+    grid-area: head;
+    position: relative;
+    background-image: linear-gradient(to right, rgb(161, 127, 12) , rgb(107, 102, 102));
+}
+
+header h2 {
+    padding-right: 10px;
+    color: white;
+    height: 51px;
+}
+
+main {
+    grid-area: cont;
+    height: 90vh;
+    background-color: #fff;
+    direction: ltr;
+
+}
+
+nav {
+    grid-area: nav;
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+    height: 90vh;
+    background-image: linear-gradient(to right, rgb(161, 127, 12) , rgb(107, 102, 102));
+}
+
+nav ul {
+    list-style: none;
+    margin: 20% 0;
+}
+
+.image {
+    width: 200px;
+    height: 200px;
+    border: 2px solid black;
+    margin: 30px auto;
+    border-radius: 50%;
+    background-image: url("../img/photo_2023-04-19_02-36-44.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+nav ul li {
+    /*padding-top: 10px;*/
+    /*background-color: #aaa;*/
+    /*margin-top: 10px;*/
+    /*text-align: center;*/
+}
+
+li a {
+    text-decoration: none;
+    color: black;
+    padding: 5px;
+    background-color: #aaa;
+    margin-top: 10px;
+    text-align: center;
+    display: block;
+}
+
+li a :hover {
+    background-color: #878787;
+}
+
+.user {
+    text-align: center;
+    margin-top: 20px;
+}
+
+main {
+    padding: 10px;
+}
